@@ -116,7 +116,7 @@ O comando de produção executa `node dist/main.js`; por isso, a compilação é
 6. O backend envia `chat:reply` com o texto, os livros recomendados e o indicador `profileComplete`. Se houver falha de processamento, envia `chat:error`.
 7. `ChatService` atualiza os Signals; `ChatMessageComponent` apresenta a resposta e, quando aplicável, `BookRecommendationCardComponent` mostra cada livro.
 
-O catálogo de demonstração encontra-se em `backend/src/catalog.ts`. Cada entrada inclui título, autor, sinopse, gêneros, temas, ritmo de leitura e número de páginas.
+O catálogo é carregado de `backend/src/acervo_oficina_de_ti.json` por `backend/src/catalog.ts`. Cada entrada inclui título, autor, sinopse, gêneros, temas, ritmo de leitura e número de páginas; subtítulo e código CDD também são disponibilizados quando presentes.
 
 ## 7. Contratos de comunicação
 
@@ -163,7 +163,8 @@ O CORS do NestJS permite, por padrão, a origem `http://localhost:4200`. O gatew
 - `backend/src/chat/chat.gateway.ts`: eventos Socket.IO.
 - `backend/src/chat/chat.controller.ts`: endpoints REST.
 - `backend/src/chat/dto/send-message.dto.ts`: DTO validado para conversa REST.
-- `backend/src/catalog.ts`: catálogo local de livros.
+- `backend/src/catalog.ts`: carregador tipado do acervo JSON local.
+- `backend/src/acervo_oficina_de_ti.json`: fonte de dados local do catálogo.
 - `backend/src/book.types.ts`: tipos compartilhados do backend.
 
 ### Frontend
@@ -204,7 +205,7 @@ O frontend pode iniciar sua sessão de testes interativa conforme a configuraç�
 - Erros do Gemini são registrados no backend e convertidos em uma mensagem amigável para o cliente Socket.IO.
 - O modo de demonstração permite experimentar a interface sem chave da API.
 - Não há banco de dados, autenticação, histórico persistente, streaming de tokens nem gestão de sessões de usuário. As mensagens existem apenas no estado do navegador durante a sessão.
-- O catálogo é estático e deve ser atualizado manualmente em `backend/src/catalog.ts`.
+- O catálogo é estático e deve ser atualizado em `backend/src/acervo_oficina_de_ti.json`; não há banco de dados nem edição pelo aplicativo.
 - O arquivo `.env` é carregado pelo `ConfigModule`; a chave Gemini não deve ser enviada ao frontend.
 
 ## 11. Próximos passos sugeridos

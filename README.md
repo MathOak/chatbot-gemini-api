@@ -44,6 +44,6 @@ cd ../frontend; npm run build
 
 - `backend/src/gemini`: integração Gemini, orientação de bibliotecária e modo de demonstração.
 - `backend/src/chat`: gateway Socket.IO, endpoint REST e DTOs validados.
-- `backend/src/catalog.ts`: catálogo inicial tipado usado nas recomendações.
+- `backend/src/acervo_oficina_de_ti.json`: fonte de dados do acervo (ISBN/ID, subtítulo, gêneros, temas, ritmo, páginas e CDD), carregada por `backend/src/catalog.ts`.
 - `frontend/src/app/components`: container do chat, mensagens, entrada e cards de livros.
 - `frontend/src/app/services/chat.service.ts`: mensagens e estado reativo com Angular Signals.

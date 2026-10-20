@@ -16,8 +16,14 @@ describe('ChatController', () => {
     controller = module.get(ChatController);
   });
 
-  it('returns the initial book catalog', () => {
+  it('returns the full catalog loaded from the acervo JSON', () => {
     expect(controller.books()).toEqual(BOOK_CATALOG);
+    expect(BOOK_CATALOG.length).toBeGreaterThan(8);
+    expect(BOOK_CATALOG.find((book) => book.id === '9786528037766')).toMatchObject({
+      title: 'Computação quântica',
+      subtitle: 'visual e intuitiva.',
+      cddCode: '004',
+    });
   });
 
   it('forwards chat history to the recommendation service', async () => {
